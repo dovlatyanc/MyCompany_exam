@@ -31,4 +31,9 @@
     <Folder Include="wwwroot\scss\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="appsettings.production.json" />
+    <None Include="appsettings.staging.json" />
+  </ItemGroup>
+
 </Project>
