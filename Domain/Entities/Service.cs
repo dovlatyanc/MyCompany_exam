@@ -19,6 +19,7 @@ public class Service : EntityBase
     public string? Description { get; set; }
 
     [Display(Name = "Титульная картинка")]
+    [MaxLength(300)]
     public string? Photo { get; set; }
 
     [Display(Name = "Тип услуги")]
