@@ -3,7 +3,7 @@
 @{
     AppConfig? appConfig = config.GetSection("Project").Get<AppConfig>();
 }
-<link href="#" rel="shortcut icon" />
+<link href="~/img/favicon.png" rel="shortcut icon" />
 <title>@(ViewBag.Title?? appConfig?.Company.CompanyName)</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
