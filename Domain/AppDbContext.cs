@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.EntityFrameworkCore.SqlServer.Query.Internal;
 using MyCompany.Domain.Entities;
 
@@ -52,6 +53,11 @@ public class AppDbContext : IdentityDbContext<IdentityUser>
             RoleId = roleAdminId,
             UserId = userAdminId,
         });
+    }
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=MyCompanyDb;Trusted_Connection=True;MultipleActiveResultSets=true")
+            .ConfigureWarnings(warnings => warnings.Ignore(RelationalEventId.PendingModelChangesWarning));
     }
 
 }

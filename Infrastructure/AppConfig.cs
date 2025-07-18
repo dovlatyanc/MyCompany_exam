@@ -4,8 +4,14 @@
     {
         public TinyMCE TinyMCE { get; set; } = new TinyMCE();
         public Company Company { get; set; } = new Company();
+        public Database Database { get; set; } = new Database();
+
     }
     
+    public class Database
+    {
+        public string? ConnectionString { get; set; }
+    }
 
 
         public class TinyMCE
