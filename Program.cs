@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MyCompany.Domain;
+using MyCompany.Domain.Repositories.Abstract;
+using MyCompany.Domain.Repositories.EntityFramework;
 using MyCompany.Infrastructure;
 
 namespace MyCompany
@@ -26,6 +28,10 @@ namespace MyCompany
             //подключаем контекст БД
             builder.Services.AddDbContext<AppDbContext>(x => x.UseSqlServer(connectionString));
 
+
+            builder.Services.AddTransient<IServiceCategoriesRepository, EFServiceCategoriesRepository>();
+            builder.Services.AddTransient<IServicesRepository, EFServicesRepository>();
+            builder.Services.AddTransient<DataManager>();
             //настройка идентити
             builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
             {
