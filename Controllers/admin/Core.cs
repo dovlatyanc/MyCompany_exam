@@ -14,8 +14,10 @@ namespace MyCompany.Controllers.admin
             _dataManager = dataManager;
         }
 
-        public IActionResult Index()
+        public async Task <IActionResult> Index()
         {
+            ViewBag.ServiceCategories = await _dataManager.ServiceCategories.GetServiceCategoriesAsync();
+            ViewBag.Services =await _dataManager.Services.GetServiceAsync();
             return View();
         }
     }
