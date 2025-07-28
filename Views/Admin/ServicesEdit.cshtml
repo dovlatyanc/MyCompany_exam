@@ -1,9 +1,13 @@
-﻿
-@model Service;
+﻿@model Service;
 @{
     string strTitle = "Редактировать запись";
     ViewBag.Title = strTitle;
 }
+<style>
+    button {
+        color: #000 !important;
+    }
+</style>
 <script src="https://cdn.tiny.cloud/1/0shlnomhb96z4q7xlii4r9w4xd8d67i7tjp15pg8p2gjau4v/tinymce/8/tinymce.min.js" referrerpolicy="origin" crossorigin="anonymous"></script>
 
 <div>
@@ -11,8 +15,8 @@
         @strTitle
     </h2>
     <div>
-        <form asp-area="" asp-controller="Admin" asp-action="ServicesEdit" method="post" enctype="multipart/form-data"  >
-        
+        <form asp-area="" asp-controller="Admin" asp-action="ServicesEdit" method="post" enctype="multipart/form-data">
+
             <input type="hidden" asp-for="Id" />
             <input type="hidden" asp-for="DateCreated" />
             <input type="hidden" asp-for="Photo" />
@@ -21,9 +25,9 @@
             <div class="div-box">
                 <select asp-for="SerrviceCategoryId">
                     <option value="">... выберите из списка ...</option>
-                    @foreach(ServiceCategory entity in ViewBag.ServiceCategories)
+                    @foreach (ServiceCategory entity in ViewBag.ServiceCategories)
                     {
-                       <option value="@entity.Id">@entity.Title</option>
+                        <option value="@entity.Id">@entity.Title</option>
                     }
                 </select>
                 <span asp-validation-for="SerrviceCategoryId"></span>
@@ -45,7 +49,7 @@
             </div>
             <div class="div-box">
                 <label asp-for="Description"></label>
-                <textarea asp-for="Description" ></textarea>
+                <textarea asp-for="Description"></textarea>
                 <span asp-validation-for="Description"></span>
             </div>
             <div class="div-box">
@@ -54,11 +58,11 @@
                 <div>
                     <img class="img-block" src="~/img/@Model.Photo" />
                 </div>
-            </div> 
-            
-             <input  style="margin-top:30px;" type="submit" value="Сохранить" /> 
+            </div>
 
-          
+            <input style="margin-top:30px;" type="submit" value="Сохранить" />
+
+
         </form>
     </div>
 </div>
@@ -69,5 +73,12 @@
       language: 'ru',
       plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
       toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+      automatic_uploads:true,
+      images_upload_url:'/admin/SaveEditorImg',
+      images_reuse_filename:true,
+      image_dimensions:false,
+      paste_data_images:true,
+      convert_urls:false
+
     });
 </script>
