@@ -1,4 +1,4 @@
-﻿@model LoginViewModel
+﻿@model LoginViewModel;
 @{
     string strTitle = "Вход в личный кабинет";
     ViewBag.Title = strTitle;
@@ -9,7 +9,10 @@
         @strTitle
     </h1>
     <div class="div-box">
-        <form asp-area="" asp-controller="Account" asp-action="Login" method="post" asp-route="@ViewBag.ReturnUrl" >
+        <form asp-controller="Account"
+              asp-action="Login"
+              method="post"
+              asp-route-returnUrl="@ViewBag.ReturnUrl">
 
             <div asp-validation-summary="All">
 

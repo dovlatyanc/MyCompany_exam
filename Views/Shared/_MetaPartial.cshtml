@@ -1,5 +1,4 @@
-﻿@page
-@inject IConfiguration config 
+﻿@inject IConfiguration config 
 @{
     AppConfig? appConfig = config.GetSection("Project").Get<AppConfig>();
 }
