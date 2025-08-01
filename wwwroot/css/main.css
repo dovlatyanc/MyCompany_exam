@@ -1987,4 +1987,7 @@ ol.default li {
     margin: 0 auto;
     max-width: 80%;
   }
+  .img-width {
+    max-width: 800px;
+  }
 }
