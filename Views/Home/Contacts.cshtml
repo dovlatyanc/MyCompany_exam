@@ -1,0 +1,6 @@
+﻿@inject IConfiguration config
+@{
+    AppConfig? appConfig = config.GetSection("Project").Get<AppConfig>();
+    string strTitle = "Контакты";
+    ViewBag.Title = strTitle;
+}
