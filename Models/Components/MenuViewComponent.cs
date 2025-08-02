@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyCompany.Domain;
 using MyCompany.Domain.Entities;
+using MyCompany.Infrastructure;
 
 namespace MyCompany.Models.Components
 {
@@ -13,10 +14,13 @@ namespace MyCompany.Models.Components
             _dataManager = dataManager;
         }
 
-        private async Task<IViewComponentResult> InvokeAsync()
+        public async Task<IViewComponentResult> InvokeAsync()
         {
             IEnumerable<Service> list = await _dataManager.Services.GetServiceAsync();
-            return await Task.FromResult((IViewComponentResult) View("Default",list));
+
+            IEnumerable<ServiceDTO> listDTO = HelperDTO.TransformServices(list);
+
+            return await Task.FromResult((IViewComponentResult) View("Default",listDTO));
         }
     }
 }

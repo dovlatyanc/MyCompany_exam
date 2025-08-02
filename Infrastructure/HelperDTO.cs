@@ -20,5 +20,16 @@ namespace MyCompany.Infrastructure
             return entityDTO;
 
         }
+
+        public static IEnumerable<ServiceDTO> TransformServices(IEnumerable<Service> entities) { 
+            List<ServiceDTO> entitiesDTO = new List<ServiceDTO>();
+
+            foreach (Service entity in entities) { 
+
+                entitiesDTO.Add(TransformService(entity));
+            }
+
+            return entitiesDTO; 
+        }
     }
 }
