@@ -8,5 +8,6 @@ namespace MyCompany.Domain.Repositories.Abstract
         Task<Service?> GetServiceIdAsync(int id);
         Task SaveServiceAsync(Service entity);
         Task DeleteServiceAsync(int id);
+     
     }
 }

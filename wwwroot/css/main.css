@@ -1990,4 +1990,7 @@ ol.default li {
   .img-width {
     max-width: 800px;
   }
+  .text-bold {
+    font-weight: bold;
+  }
 }
